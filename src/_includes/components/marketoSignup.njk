@@ -1,0 +1,38 @@
+<section class="component marketo">
+  <div class="marketo__copy">
+    <h2>{{ block.heading }}</h2>
+    {% if block.subheading %}<p class="lead">{{ block.subheading }}</p>{% endif %}
+  </div>
+  <form class="marketo__form" action="#" method="post">
+    <div class="marketo__grid">
+      <label>
+        <span>First name</span>
+        <input type="text" name="firstName" placeholder="Jane" />
+      </label>
+      <label>
+        <span>Last name</span>
+        <input type="text" name="lastName" placeholder="Doe" />
+      </label>
+      <label>
+        <span>Work email</span>
+        <input type="email" name="email" placeholder="jane@company.com" />
+      </label>
+      <label>
+        <span>Company</span>
+        <input type="text" name="company" placeholder="Company" />
+      </label>
+    </div>
+    <label class="marketo__full">
+      <span>Role</span>
+      <input type="text" name="role" placeholder="Director of Marketing" />
+    </label>
+    <label class="marketo__full checkbox">
+      <input type="checkbox" name="consent" />
+      <span>I agree to receive communications.</span>
+    </label>
+    <button class="button" type="submit">{{ block.buttonLabel or "Request access" }}</button>
+    {% if block.disclaimer %}
+      <p class="muted">{{ block.disclaimer }}</p>
+    {% endif %}
+  </form>
+</section>

@@ -1,0 +1,28 @@
+{
+  "name": "sanity-eleventy-component-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:site dev:studio dev:sync",
+    "dev:site": "eleventy --serve",
+    "build": "eleventy",
+    "dev:studio": "cd studio && sanity dev",
+    "build:studio": "cd studio && sanity build",
+    "dev:sync": "node scripts/sanity-watch.js"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@sanity/client": "^6.25.0",
+    "dotenv": "^16.4.5",
+    "npm-run-all": "^4.1.5",
+    "nunjucks": "^3.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.3.11"
+  },
+  "devDependencies": {
+    "@sanity/vision": "^3.56.0",
+    "sanity": "^3.56.0"
+  }
+}

@@ -1,0 +1,21 @@
+.image-with-text {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.image-with-text__media img {
+  width: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.image-with-text--image-left .image-with-text__content {
+  order: 2;
+}
+
+.image-with-text--image-left .image-with-text__media {
+  order: 1;
+}

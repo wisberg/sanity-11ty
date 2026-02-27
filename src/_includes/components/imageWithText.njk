@@ -1,0 +1,21 @@
+<section class="component image-with-text{% if block.imagePosition == "left" %} image-with-text--image-left{% endif %}">
+  <div class="image-with-text__content">
+    {% if block.eyebrow %}<p class="eyebrow">{{ block.eyebrow }}</p>{% endif %}
+    <h2>{{ block.heading }}</h2>
+    {% if block.body %}<p class="lead">{{ block.body }}</p>{% endif %}
+    {% if block.linkType == "internal" and block.internalSlug %}
+      <a class="button ghost" href="{{ block.internalSlug | slugToPermalink }}">
+        {{ block.ctaLabel or "Learn more" }}
+      </a>
+    {% elif block.linkType == "external" and block.externalUrl %}
+      <a class="button ghost" href="{{ block.externalUrl }}">
+        {{ block.ctaLabel or "Learn more" }}
+      </a>
+    {% endif %}
+  </div>
+  {% if block.imageUrl %}
+    <div class="image-with-text__media">
+      <img src="{{ block.imageUrl }}" alt="{{ block.imageAlt or block.heading }}" />
+    </div>
+  {% endif %}
+</section>

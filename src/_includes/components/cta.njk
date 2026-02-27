@@ -1,0 +1,15 @@
+<section class="component cta">
+  {% if block.text %}<p class="lead">{{ block.text }}</p>{% endif %}
+  {% if block.linkType == "internal" and block.internalSlug %}
+    {% if block.internalSlug == "home" %}
+      {% set href = "/" %}
+    {% else %}
+      {% set href = "/" + block.internalSlug + "/" %}
+    {% endif %}
+  {% else %}
+    {% set href = block.externalUrl %}
+  {% endif %}
+  {% if href %}
+    <a class="button" href="{{ href }}">{{ block.buttonLabel or "Learn more" }}</a>
+  {% endif %}
+</section>

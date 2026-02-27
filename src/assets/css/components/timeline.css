@@ -1,0 +1,23 @@
+.timeline__track {
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline__label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+.timeline__card h3 {
+  margin-bottom: 0.4rem;
+}

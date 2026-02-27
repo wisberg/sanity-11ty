@@ -1,0 +1,50 @@
+.media-mosaic__header {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(260px, 2fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.media-mosaic__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.media-mosaic__grid figure {
+  margin: 0;
+  border: 1px solid var(--line);
+  padding: 0.75rem;
+}
+
+.media-mosaic__grid img {
+  width: 100%;
+  display: block;
+}
+
+.media-mosaic__grid figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.media-mosaic__grid figure:nth-child(1) {
+  grid-column: span 7;
+}
+
+.media-mosaic__grid figure:nth-child(2) {
+  grid-column: span 5;
+}
+
+.media-mosaic__grid figure:nth-child(3) {
+  grid-column: span 4;
+}
+
+.media-mosaic__grid figure:nth-child(4) {
+  grid-column: span 4;
+}
+
+.media-mosaic__grid figure:nth-child(5) {
+  grid-column: span 4;
+}

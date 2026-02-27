@@ -1,0 +1,12 @@
+<section class="component hero{% if block.imagePosition == "left" %} hero--image-left{% endif %}">
+  <div class="hero-content">
+    {% if block.eyebrow %}<p class="eyebrow">{{ block.eyebrow }}</p>{% endif %}
+    <h1>{{ block.heading }}</h1>
+    {% if block.subheading %}<p class="lead">{{ block.subheading }}</p>{% endif %}
+  </div>
+  {% if block.imageUrl %}
+    <div class="hero-media">
+      <img src="{{ block.imageUrl }}" alt="{{ block.imageAlt or block.heading }}" />
+    </div>
+  {% endif %}
+</section>

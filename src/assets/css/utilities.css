@@ -1,0 +1,17 @@
+.lead {
+  font-size: 1.05rem;
+  color: #3d3d3d;
+}
+
+.muted {
+  color: #5a5a5a;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #6a6a6a;
+  margin-bottom: 0.75rem;
+}

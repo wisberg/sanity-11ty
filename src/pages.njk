@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: sanity.pages
+  size: 1
+  alias: sanityPage
+permalink: "{% if sanity.site.homepageSlug and sanityPage.slug.current == sanity.site.homepageSlug %}/{% else %}{{ sanityPage.slug.current | slugToPermalink }}{% endif %}"
+title: "{{ sanityPage.title }}"
+---
+<article class="page-shell">
+  {% for block in sanityPage.pageBuilder %}
+    {% include "components/" + block._type + ".njk" ignore missing %}
+  {% endfor %}
+</article>

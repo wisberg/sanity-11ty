@@ -1,0 +1,11 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+Allow: /
+{% if sanity.site.siteUrl %}
+Sitemap: {{ sanity.site.siteUrl }}/sitemap.xml
+{% else %}
+Sitemap: /sitemap.xml
+{% endif %}

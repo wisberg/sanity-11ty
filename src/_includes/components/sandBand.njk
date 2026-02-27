@@ -1,0 +1,14 @@
+<section class="component band band--sand">
+  {% if block.eyebrow %}<p class="eyebrow">{{ block.eyebrow }}</p>{% endif %}
+  <h2>{{ block.heading }}</h2>
+  {% if block.body %}<p class="lead">{{ block.body }}</p>{% endif %}
+  {% if block.linkType == "internal" and block.internalSlug %}
+    <a class="button" href="{{ block.internalSlug | slugToPermalink }}">
+      {{ block.ctaLabel or "Learn more" }}
+    </a>
+  {% elif block.linkType == "external" and block.externalUrl %}
+    <a class="button" href="{{ block.externalUrl }}">
+      {{ block.ctaLabel or "Learn more" }}
+    </a>
+  {% endif %}
+</section>

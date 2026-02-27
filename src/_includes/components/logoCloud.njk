@@ -1,0 +1,14 @@
+<section class="component logo-cloud">
+  {% if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+  {% if block.logos and block.logos.length %}
+    <div class="logo-grid">
+      {% for logo in block.logos %}
+        {% if logo.url %}
+          <div class="logo-tile">
+            <img src="{{ logo.url }}" alt="{{ logo.alt or "Logo" }}" />
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

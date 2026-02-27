@@ -1,0 +1,32 @@
+<section
+  class="component full-hero"
+  {% if block.backgroundUrl %}
+    style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url('{{ block.backgroundUrl }}');"
+  {% endif %}
+>
+  <div class="full-hero__inner">
+    {% if block.eyebrow %}<p class="eyebrow">{{ block.eyebrow }}</p>{% endif %}
+    <h1>{{ block.heading }}</h1>
+    {% if block.subheading %}<p class="lead">{{ block.subheading }}</p>{% endif %}
+    <div class="full-hero__actions">
+      {% if block.primaryLinkType == "internal" and block.primaryInternalSlug %}
+        <a class="button" href="{{ block.primaryInternalSlug | slugToPermalink }}">
+          {{ block.primaryLabel or "Get started" }}
+        </a>
+      {% elif block.primaryLinkType == "external" and block.primaryExternalUrl %}
+        <a class="button" href="{{ block.primaryExternalUrl }}">
+          {{ block.primaryLabel or "Get started" }}
+        </a>
+      {% endif %}
+      {% if block.secondaryLinkType == "internal" and block.secondaryInternalSlug %}
+        <a class="button ghost" href="{{ block.secondaryInternalSlug | slugToPermalink }}">
+          {{ block.secondaryLabel or "See details" }}
+        </a>
+      {% elif block.secondaryLinkType == "external" and block.secondaryExternalUrl %}
+        <a class="button ghost" href="{{ block.secondaryExternalUrl }}">
+          {{ block.secondaryLabel or "See details" }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>

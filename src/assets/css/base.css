@@ -1,0 +1,32 @@
+:root {
+  --bg: #ffffff;
+  --ink: #0b0b0b;
+  --surface: #ffffff;
+  --line: #d8d8d8;
+  --accent: #0b0b0b;
+  --accent-strong: #000000;
+  --shadow: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  margin: 0 0 0.75rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}

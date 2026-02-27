@@ -1,0 +1,16 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% if sanity.site.siteUrl %}
+    {% for p in sanity.pages %}
+      {% if sanity.site.homepageSlug and p.slug.current == sanity.site.homepageSlug %}
+        <url><loc>{{ sanity.site.siteUrl }}/</loc></url>
+      {% else %}
+        <url><loc>{{ sanity.site.siteUrl }}{{ p.slug.current | slugToPermalink }}</loc></url>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</urlset>

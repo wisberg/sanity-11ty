@@ -1,0 +1,39 @@
+<section class="component showcase{% if block.imagePosition == "left" %} showcase--image-left{% endif %}">
+  <div class="showcase__content">
+    {% if block.eyebrow %}<p class="eyebrow">{{ block.eyebrow }}</p>{% endif %}
+    <h2>{{ block.heading }}</h2>
+    {% if block.body %}<p class="lead">{{ block.body }}</p>{% endif %}
+    {% if block.highlights and block.highlights.length %}
+      <ul class="showcase__highlights">
+        {% for item in block.highlights %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="showcase__actions">
+      {% if block.primaryLinkType == "internal" and block.primaryInternalSlug %}
+        <a class="button" href="{{ block.primaryInternalSlug | slugToPermalink }}">
+          {{ block.primaryLabel or "Get started" }}
+        </a>
+      {% elif block.primaryLinkType == "external" and block.primaryExternalUrl %}
+        <a class="button" href="{{ block.primaryExternalUrl }}">
+          {{ block.primaryLabel or "Get started" }}
+        </a>
+      {% endif %}
+      {% if block.secondaryLinkType == "internal" and block.secondaryInternalSlug %}
+        <a class="button ghost" href="{{ block.secondaryInternalSlug | slugToPermalink }}">
+          {{ block.secondaryLabel or "See details" }}
+        </a>
+      {% elif block.secondaryLinkType == "external" and block.secondaryExternalUrl %}
+        <a class="button ghost" href="{{ block.secondaryExternalUrl }}">
+          {{ block.secondaryLabel or "See details" }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+  {% if block.imageUrl %}
+    <div class="showcase__media">
+      <img src="{{ block.imageUrl }}" alt="{{ block.imageAlt or block.heading }}" />
+    </div>
+  {% endif %}
+</section>

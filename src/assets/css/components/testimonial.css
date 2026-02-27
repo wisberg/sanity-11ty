@@ -1,0 +1,18 @@
+.testimonial blockquote {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.testimonial-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial .avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}

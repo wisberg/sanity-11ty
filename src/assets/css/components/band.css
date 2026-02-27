@@ -1,0 +1,26 @@
+.band {
+  margin: 2rem -2rem;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.band--sand {
+  background: #efe7db;
+}
+
+.band--dark {
+  background: #0b0b0b;
+  color: #fff;
+  border-color: #2a2a2a;
+}
+
+.band--dark .eyebrow,
+.band--dark .lead {
+  color: #dcdcdc;
+}
+
+.band--dark .button.ghost {
+  color: #fff;
+  border-color: #fff;
+}

@@ -1,0 +1,22 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.stats-card {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 1.25rem;
+  text-align: center;
+  background: #fff;
+}
+
+.stats-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.stats-label {
+  color: #6b7280;
+}

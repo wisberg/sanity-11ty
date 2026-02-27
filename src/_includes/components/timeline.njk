@@ -1,0 +1,16 @@
+<section class="component timeline">
+  {% if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+  {% if block.items and block.items.length %}
+    <div class="timeline__track">
+      {% for item in block.items %}
+        <div class="timeline__item">
+          <div class="timeline__label">{{ item.label }}</div>
+          <div class="timeline__card">
+            <h3>{{ item.title }}</h3>
+            {% if item.body %}<p class="muted">{{ item.body }}</p>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

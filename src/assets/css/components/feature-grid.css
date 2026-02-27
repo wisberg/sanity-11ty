@@ -1,0 +1,25 @@
+.feature-grid__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.feature-card {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 1.25rem;
+  background: #fff;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,13 @@
+<section class="component stats">
+  {% if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+  {% if block.items and block.items.length %}
+    <div class="stats-grid">
+      {% for item in block.items %}
+        <div class="stats-card">
+          <div class="stats-value">{{ item.value }}</div>
+          <div class="stats-label">{{ item.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,55 @@
+.marketo {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(320px, 1.2fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.marketo__form {
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+}
+
+.marketo__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.marketo__form label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.marketo__form input[type="text"],
+.marketo__form input[type="email"] {
+  border: 1px solid var(--line);
+  padding: 0.65rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.marketo__full {
+  margin-bottom: 1rem;
+}
+
+.marketo__form .checkbox {
+  grid-auto-flow: column;
+  align-items: center;
+  font-size: 0.8rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.marketo__form .checkbox input {
+  width: 18px;
+  height: 18px;
+}
+
+.marketo__form .button {
+  margin-top: 0.5rem;
+}

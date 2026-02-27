@@ -1,0 +1,11 @@
+.faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+}

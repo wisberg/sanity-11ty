@@ -1,0 +1,13 @@
+<section class="component faq">
+  {% if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+  {% if block.items and block.items.length %}
+    <div class="faq-list">
+      {% for item in block.items %}
+        <div class="faq-item">
+          <h3>{{ item.question }}</h3>
+          <p class="muted">{{ item.answer }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,277 @@
+---
+layout: layouts/base.njk
+title: Component Library
+permalink: /components/index.html
+---
+<section class="page-shell">
+  <h1>Component Library</h1>
+  <p>Use these in Sanity's page builder array to compose new pages.</p>
+
+  <h2>Hero</h2>
+  {% set block = {
+    "_type": "hero",
+    "eyebrow": "Sample",
+    "heading": "Hero Heading",
+    "subheading": "A short supporting message.",
+    "imageUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Landscape",
+    "imagePosition": "left"
+  } %}
+  {% include "components/hero.njk" %}
+
+  <h2>Full Width Hero</h2>
+  {% set block = {
+    "_type": "fullWidthHero",
+    "eyebrow": "Product launch",
+    "heading": "A full-width hero built for modern brands",
+    "subheading": "Use bold imagery, layered overlays, and clear CTAs to make the first impression count.",
+    "primaryLabel": "Start now",
+    "primaryLinkType": "external",
+    "primaryExternalUrl": "https://www.sanity.io",
+    "secondaryLabel": "See components",
+    "secondaryLinkType": "external",
+    "secondaryExternalUrl": "/components/",
+    "backgroundUrl": "https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1600&q=80"
+  } %}
+  {% include "components/fullWidthHero.njk" %}
+
+  <h2>Rich Text</h2>
+  {% set block = {
+    "_type": "richText",
+    "body": [
+      {
+        "_type": "block",
+        "children": [
+          {"_type": "span", "text": "This is rich text content from Sanity."}
+        ]
+      }
+    ]
+  } %}
+  {% include "components/richText.njk" %}
+
+  <h2>Feature Grid</h2>
+  {% set block = {
+    "_type": "featureGrid",
+    "heading": "Everything you need to launch",
+    "subheading": "Polished components that look great on real sites.",
+    "features": [
+      {"icon": "⚡", "title": "Fast setup", "description": "Connect Sanity and start building pages in minutes."},
+      {"icon": "🧩", "title": "Modular blocks", "description": "Compose pages from reusable, modern components."},
+      {"icon": "🎨", "title": "Clean design", "description": "Subtle lines, soft surfaces, and contemporary typography."}
+    ]
+  } %}
+  {% include "components/featureGrid.njk" %}
+
+  <h2>Image With Text</h2>
+  {% set block = {
+    "_type": "imageWithText",
+    "eyebrow": "Design system",
+    "heading": "Give your content room to breathe",
+    "body": "Pair imagery with short, scannable copy to keep the experience modern and readable.",
+    "ctaLabel": "See the guide",
+    "linkType": "external",
+    "externalUrl": "https://www.sanity.io/guides",
+    "imageUrl": "https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Workspace",
+    "imagePosition": "right"
+  } %}
+  {% include "components/imageWithText.njk" %}
+
+  <h2>Stats</h2>
+  {% set block = {
+    "_type": "stats",
+    "heading": "Teams move faster with a flexible CMS",
+    "items": [
+      {"value": "3x", "label": "Faster publishing"},
+      {"value": "24/7", "label": "Content updates"},
+      {"value": "99.9%", "label": "Uptime"}
+    ]
+  } %}
+  {% include "components/stats.njk" %}
+
+  <h2>Testimonial</h2>
+  {% set block = {
+    "_type": "testimonial",
+    "quote": "The block system lets our team ship new pages without touching the codebase.",
+    "name": "Jordan Lee",
+    "role": "Product Lead",
+    "company": "Northwind",
+    "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+    "avatarAlt": "Jordan Lee"
+  } %}
+  {% include "components/testimonial.njk" %}
+
+  <h2>Logo Cloud</h2>
+  {% set block = {
+    "_type": "logoCloud",
+    "heading": "Trusted by modern teams",
+    "logos": [
+      {"url": "https://dummyimage.com/240x120/111111/ffffff&text=Northwind", "alt": "Northwind"},
+      {"url": "https://dummyimage.com/240x120/111111/ffffff&text=Supernova", "alt": "Supernova"},
+      {"url": "https://dummyimage.com/240x120/111111/ffffff&text=Vertex", "alt": "Vertex"},
+      {"url": "https://dummyimage.com/240x120/111111/ffffff&text=Daybreak", "alt": "Daybreak"}
+    ]
+  } %}
+  {% include "components/logoCloud.njk" %}
+
+  <h2>Pricing</h2>
+  {% set block = {
+    "_type": "pricing",
+    "heading": "Simple plans for growing teams",
+    "subheading": "Choose a plan that scales with your content and traffic.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$19/mo",
+        "description": "For small teams launching new sites.",
+        "features": ["1 site", "5 editors", "Basic support"],
+        "ctaLabel": "Get started",
+        "ctaUrl": "https://www.sanity.io",
+        "featured": false
+      },
+      {
+        "name": "Pro",
+        "price": "$49/mo",
+        "description": "For teams that need advanced workflows.",
+        "features": ["Unlimited sites", "Unlimited editors", "Priority support"],
+        "ctaLabel": "Go Pro",
+        "ctaUrl": "https://www.sanity.io",
+        "featured": true
+      }
+    ]
+  } %}
+  {% include "components/pricing.njk" %}
+
+  <h2>FAQ</h2>
+  {% set block = {
+    "_type": "faq",
+    "heading": "Common questions",
+    "items": [
+      {"question": "Can I mix and match blocks?", "answer": "Yes. The page builder is designed for flexible layouts."},
+      {"question": "Does this support drafts?", "answer": "Drafts stay in Sanity until you publish them."}
+    ]
+  } %}
+  {% include "components/faq.njk" %}
+
+  <h2>Sand Band</h2>
+  {% set block = {
+    "_type": "sandBand",
+    "eyebrow": "BridgeBio style",
+    "heading": "A warm sand band to break up sections",
+    "body": "Use muted sand tones for visual rhythm between white and black panels.",
+    "ctaLabel": "Read the story",
+    "linkType": "external",
+    "externalUrl": "https://www.bridgebio.com"
+  } %}
+  {% include "components/sandBand.njk" %}
+
+  <h2>Dark Band</h2>
+  {% set block = {
+    "_type": "darkBand",
+    "eyebrow": "Clinical programs",
+    "heading": "Black panels add contrast and weight",
+    "body": "This dark band creates visual breaks while keeping typography crisp.",
+    "ctaLabel": "View pipeline",
+    "linkType": "external",
+    "externalUrl": "https://www.bridgebio.com"
+  } %}
+  {% include "components/darkBand.njk" %}
+
+  <h2>Marketo Signup (Mock)</h2>
+  {% set block = {
+    "_type": "marketoSignup",
+    "heading": "Get the latest updates",
+    "subheading": "Sign up to receive product news, trial opportunities, and published results.",
+    "buttonLabel": "Request access",
+    "disclaimer": "This is a demo form. No data is submitted."
+  } %}
+  {% include "components/marketoSignup.njk" %}
+
+  <h2>Showcase</h2>
+  {% set block = {
+    "_type": "showcase",
+    "eyebrow": "Flagship program",
+    "heading": "Precision built for high-impact launches",
+    "body": "A hero-level section with high-contrast layout, editorial typography, and clear CTAs.",
+    "primaryLabel": "Explore program",
+    "primaryLinkType": "external",
+    "primaryExternalUrl": "https://www.bridgebio.com",
+    "secondaryLabel": "View data",
+    "secondaryLinkType": "external",
+    "secondaryExternalUrl": "https://www.bridgebio.com",
+    "highlights": ["Multi-site studies", "Real-world evidence", "Patient-first outcomes"],
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Microscope",
+    "imagePosition": "left"
+  } %}
+  {% include "components/showcase.njk" %}
+
+  <h2>Media Mosaic</h2>
+  {% set block = {
+    "_type": "mediaMosaic",
+    "heading": "Breakthroughs in motion",
+    "subheading": "A dense, editorial image grid for press, R&D, or culture stories.",
+    "items": [
+      {
+        "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Landscape",
+        "caption": "Global trials"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=900&q=80",
+        "alt": "Workspace",
+        "caption": "Research teams"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=900&q=80",
+        "alt": "Lab",
+        "caption": "Advanced assays"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
+        "alt": "Microscope",
+        "caption": "Discovery"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?auto=format&fit=crop&w=900&q=80",
+        "alt": "Biotech",
+        "caption": "Clinical pipeline"
+      }
+    ]
+  } %}
+  {% include "components/mediaMosaic.njk" %}
+
+  <h2>Timeline</h2>
+  {% set block = {
+    "_type": "timeline",
+    "heading": "Milestones",
+    "items": [
+      {
+        "label": "2024",
+        "title": "Phase II results",
+        "body": "Positive data across multiple cohorts with strong safety profile."
+      },
+      {
+        "label": "2025",
+        "title": "Regulatory submission",
+        "body": "BLA filed with FDA and EMA for priority review."
+      },
+      {
+        "label": "2026",
+        "title": "Global launch",
+        "body": "Commercial rollout with patient access programs."
+      }
+    ]
+  } %}
+  {% include "components/timeline.njk" %}
+
+  <h2>CTA</h2>
+  {% set block = {
+    "_type": "cta",
+    "text": "Ready to build another page?",
+    "buttonLabel": "See home",
+    "linkType": "internal",
+    "internalSlug": "home"
+  } %}
+  {% include "components/cta.njk" %}
+</section>

@@ -1,0 +1,18 @@
+<section class="component testimonial">
+  <blockquote>
+    <p>“{{ block.quote }}”</p>
+  </blockquote>
+  <div class="testimonial-meta">
+    {% if block.avatarUrl %}
+      <img class="avatar" src="{{ block.avatarUrl }}" alt="{{ block.avatarAlt or block.name }}" />
+    {% endif %}
+    <div>
+      {% if block.name %}<strong>{{ block.name }}</strong>{% endif %}
+      {% if block.role or block.company %}
+        <span class="muted">
+          {{ block.role }}{% if block.role and block.company %}, {% endif %}{{ block.company }}
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</section>

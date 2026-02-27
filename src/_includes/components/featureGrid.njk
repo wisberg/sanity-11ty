@@ -1,0 +1,15 @@
+<section class="component feature-grid">
+  {% if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+  {% if block.subheading %}<p class="lead">{{ block.subheading }}</p>{% endif %}
+  {% if block.features and block.features.length %}
+    <div class="feature-grid__items">
+      {% for item in block.features %}
+        <div class="feature-card">
+          {% if item.icon %}<span class="feature-icon">{{ item.icon }}</span>{% endif %}
+          <h3>{{ item.title }}</h3>
+          {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

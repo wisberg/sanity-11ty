@@ -1,0 +1,13 @@
+<section class="component rich-text">
+  {% if block.body and block.body.length %}
+    {% for item in block.body %}
+      {% if item._type == "block" %}
+        <p>
+          {% for child in item.children %}
+            {{ child.text }}
+          {% endfor %}
+        </p>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</section>

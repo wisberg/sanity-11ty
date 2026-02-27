@@ -1,0 +1,18 @@
+<section class="component media-mosaic">
+  <div class="media-mosaic__header">
+    {% if block.heading %}<h2>{{ block.heading }}</h2>{% endif %}
+    {% if block.subheading %}<p class="lead">{{ block.subheading }}</p>{% endif %}
+  </div>
+  {% if block.items and block.items.length %}
+    <div class="media-mosaic__grid">
+      {% for item in block.items %}
+        {% if item.url %}
+          <figure>
+            <img src="{{ item.url }}" alt="{{ item.alt or block.heading }}" />
+            {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+          </figure>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

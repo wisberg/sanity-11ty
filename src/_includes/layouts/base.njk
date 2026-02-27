@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% set metaTitle = sanityPage.seoTitle or sanityPage.title or title or "Site" %}
+    {% set metaDescription = sanityPage.seoDescription or sanity.site.defaultDescription %}
+    {% set metaKeywords = sanityPage.seoKeywords %}
+    <title>{{ metaTitle }}</title>
+    {% if metaDescription %}
+      <meta name="description" content="{{ metaDescription }}" />
+    {% endif %}
+    {% if metaKeywords and metaKeywords.length %}
+      <meta name="keywords" content="{{ metaKeywords | join(\", \") }}" />
+    {% endif %}
+    <meta property="og:title" content="{{ metaTitle }}" />
+    {% if metaDescription %}
+      <meta property="og:description" content="{{ metaDescription }}" />
+    {% endif %}
+    <meta property="og:type" content="website" />
+    {% if sanityPage.seoImageUrl or sanity.site.defaultOgImageUrl %}
+      <meta property="og:image" content="{{ sanityPage.seoImageUrl or sanity.site.defaultOgImageUrl }}" />
+      <meta name="twitter:card" content="summary_large_image" />
+    {% endif %}
+    {% if sanity.site.title %}
+      <meta property="og:site_name" content="{{ sanity.site.title }}" />
+    {% endif %}
+    {% if sanityPage.noIndex %}
+      <meta name="robots" content="noindex, nofollow" />
+    {% endif %}
+    {% if sanity.site.siteUrl %}
+      {% set canonicalUrl = sanity.site.siteUrl %}
+      {% if sanity.site.homepageSlug and sanityPage.slug.current == sanity.site.homepageSlug %}
+        {% set canonicalUrl = canonicalUrl + "/" %}
+      {% else %}
+        {% set canonicalUrl = canonicalUrl + (sanityPage.slug.current | slugToPermalink) %}
+      {% endif %}
+      <link rel="canonical" href="{{ canonicalUrl }}" />
+    {% endif %}
+    {% if sanityRefresh and sanityRefresh.refreshedAt %}
+      <meta name="x-sanity-refresh" content="{{ sanityRefresh.refreshedAt }}" />
+    {% endif %}
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    {% if sanity.site.analyticsId %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ sanity.site.analyticsId }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ sanity.site.analyticsId }}');
+      </script>
+    {% endif %}
+  </head>
+  <body>
+    <header class="site-header site-header--sticky">
+      <a href="/" class="brand">{{ sanity.site.title or "Simple 11ty + Sanity" }}</a>
+      <nav class="site-nav">
+        {% if sanity.site and sanity.site.navigation and sanity.site.navigation.length %}
+          <ul class="nav-list">
+            {% for item in sanity.site.navigation %}
+              <li class="nav-item">
+                {% if item.linkType == "internal" and item.internalSlug %}
+                  <a href="{{ item.internalSlug | slugToPermalink }}">{{ item.label }}</a>
+                {% elif item.linkType == "external" and item.externalUrl %}
+                  <a href="{{ item.externalUrl }}" target="_blank" rel="noreferrer">
+                    {{ item.label }}
+                  </a>
+                {% else %}
+                  <span>{{ item.label }}</span>
+                {% endif %}
+                {% if item.children and item.children.length %}
+                  <span class="nav-arrow" aria-hidden="true">▾</span>
+                  <ul class="nav-dropdown">
+                    {% for child in item.children %}
+                      <li>
+                        {% if child.linkType == "internal" and child.internalSlug %}
+                          <a href="{{ child.internalSlug | slugToPermalink }}">{{ child.label }}</a>
+                        {% elif child.linkType == "external" and child.externalUrl %}
+                          <a href="{{ child.externalUrl }}" target="_blank" rel="noreferrer">
+                            {{ child.label }}
+                          </a>
+                        {% else %}
+                          <span>{{ child.label }}</span>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+            <li class="nav-item">
+              <a href="/components/">Components</a>
+            </li>
+          </ul>
+        {% else %}
+          <a href="/components/">Components</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    <main>
+      {{ content | safe }}
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <nav class="site-footer__nav">
+          {% set footerLinks = sanity.site.footerLinks or sanity.site.navigation %}
+          {% if footerLinks and footerLinks.length %}
+            <ul class="footer-nav">
+              {% for item in footerLinks %}
+                <li class="footer-column">
+                  {% if item.linkType == "internal" and item.internalSlug %}
+                    <a href="{{ item.internalSlug | slugToPermalink }}">{{ item.label }}</a>
+                  {% elif item.linkType == "external" and item.externalUrl %}
+                    <a href="{{ item.externalUrl }}" target="_blank" rel="noreferrer">
+                      {{ item.label }}
+                    </a>
+                  {% else %}
+                    <span>{{ item.label }}</span>
+                  {% endif %}
+                  {% if item.children and item.children.length %}
+                    <ul class="footer-subnav">
+                      {% for child in item.children %}
+                        <li>
+                          {% if child.linkType == "internal" and child.internalSlug %}
+                            <a href="{{ child.internalSlug | slugToPermalink }}">{{ child.label }}</a>
+                          {% elif child.linkType == "external" and child.externalUrl %}
+                            <a href="{{ child.externalUrl }}" target="_blank" rel="noreferrer">
+                              {{ child.label }}
+                            </a>
+                          {% else %}
+                            <span>{{ child.label }}</span>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+              <li class="footer-column"><a href="/components/">Components</a></li>
+            </ul>
+          {% else %}
+            <a href="/components/">Components</a>
+          {% endif %}
+        </nav>
+        <div class="site-footer__brand">
+          <a href="/" class="brand">{{ sanity.site.title or "Simple 11ty + Sanity" }}</a>
+          <p class="muted">Built with Eleventy + Sanity.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
