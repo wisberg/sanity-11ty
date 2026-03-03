@@ -56,6 +56,9 @@ npm run dev
   - `siteUrl`
   - `navigation` (header items + dropdowns)
   - `footerLinks`
+  - `footerBackground`
+  - `footerTagline`
+  - `footerLegal`
   - `homepage`
   - `defaultDescription`
   - `defaultOgImage`
@@ -77,6 +80,7 @@ npm run dev
   - `showcase`
   - `mediaMosaic`
   - `timeline`
+  - `fullScreenHero`
   - `cta`
 
 ## How page generation works

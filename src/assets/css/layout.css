@@ -8,8 +8,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 2rem;
+  padding: 0;
   border-bottom: 1px solid var(--line);
+  min-height: 64px;
 }
 
 .site-header--sticky {
@@ -24,17 +25,117 @@
   color: var(--ink);
   font-weight: 700;
   letter-spacing: -0.02em;
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--line);
+  margin-right: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+}
+
+.brand img {
+  max-height: 32px;
+  display: block;
 }
 
 .page-shell {
-  padding: 2rem;
-  padding-bottom: 5rem;
+  padding: 0;
+  padding-bottom: 0;
 }
 
+.page-layout--with-sidebar {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  gap: 0;
+}
+
+.page-layout--with-sidebar .page-shell {
+  padding: 0;
+  padding-bottom: 0;
+}
+
+.component-section {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.component-section:first-of-type {
+  border-top: 1px solid var(--line);
+}
+
+.components-page {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.side-nav {
+  border-right: 1px solid var(--line);
+  width: var(--sidebar-width);
+  background: #fff;
+  position: sticky;
+  top: 72px;
+  align-self: start;
+  max-height: calc(100vh - 72px);
+  overflow: auto;
+}
+
+.side-nav__label {
+  margin: 0;
+  padding: 1rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.side-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-nav li {
+  border-top: 1px solid var(--line);
+}
+
+.side-nav li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.side-nav a,
+.side-nav span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.55rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  border: none;
+  margin: 0;
+}
+
+.side-nav a:hover {
+  background: #f1f1f1;
+}
+
+.side-nav__arrow {
+  font-size: 0.9rem;
+}
+
+.side-nav li.is-active a {
+  background: #f7f7f7;
+}
 .site-footer {
   border-top: 1px solid var(--line);
-  padding: 2.5rem 2rem;
+  padding: 2.5rem var(--gutter);
   background: var(--bg);
+  background-size: cover;
+  background-position: center;
 }
 
 .site-footer__inner {

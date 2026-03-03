@@ -14,6 +14,34 @@
   gap: 1.25rem;
 }
 
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+.nav-groups {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-list--primary {
+  gap: 1.25rem;
+  padding-left: 0;
+  border-left: none;
+  font-size: 0.85rem;
+  padding: 1.25rem var(--gutter);
+}
+
+.nav-list--evergreen {
+  gap: 1.5rem;
+  font-size: 1rem;
+  padding: 1.25rem var(--gutter);
+}
+
 .nav-item {
   position: relative;
 }
@@ -37,37 +65,76 @@
   margin-left: 0.35rem;
 }
 
-.nav-dropdown {
-  list-style: none;
+.mega-menu {
   position: absolute;
   left: 0;
-  top: 2.2rem;
-  min-width: 180px;
-  margin: 0;
-  padding: 0.75rem;
+  right: 0;
+  top: calc(100% + 1px);
+  width: 100%;
+  padding: var(--gutter);
   background: #fff;
-  border: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-left: none;
+  border-right: none;
   border-radius: 0;
   box-shadow: none;
-  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
   z-index: 10;
 }
 
-.nav-dropdown li {
+.mega-menu__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.mega-menu__column {
+  display: none;
+  gap: 0.5rem;
+}
+
+.mega-menu__column.is-active {
+  display: grid;
+}
+
+.mega-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mega-menu__title {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.mega-menu__list li {
   margin: 0;
 }
 
-.nav-dropdown a,
-.nav-dropdown span {
+.mega-menu__list a,
+.mega-menu__list span {
   display: block;
-  padding: 0.45rem 0.35rem;
+  padding: 0.35rem 0;
   margin: 0;
   color: var(--ink);
+  text-decoration: none;
 }
 
-.nav-item:hover .nav-dropdown,
-.nav-item:focus-within .nav-dropdown {
-  display: block;
+.mega-menu__list a:hover {
+  text-decoration: underline;
+}
+
+.site-nav.is-mega-open .mega-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .nav-item::after {
@@ -76,5 +143,5 @@
   left: -0.5rem;
   right: -0.5rem;
   top: 100%;
-  height: 12px;
+  height: 14px;
 }

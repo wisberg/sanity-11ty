@@ -39,6 +39,7 @@ export default defineType({
         { type: "showcase" },
         { type: "mediaMosaic" },
         { type: "timeline" },
+        { type: "fullScreenHero" },
         { type: "cta" }
       ],
       validation: (rule) => rule.min(1)

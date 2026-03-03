@@ -1,6 +1,6 @@
 .band {
-  margin: 2rem -2rem;
-  padding: 3rem 2rem;
+  margin: 0;
+  padding: var(--gutter);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }

@@ -53,55 +53,90 @@
   </head>
   <body>
     <header class="site-header site-header--sticky">
-      <a href="/" class="brand">{{ sanity.site.title or "Simple 11ty + Sanity" }}</a>
-      <nav class="site-nav">
+      <div class="site-header__left">
+        <a href="/" class="brand">
+          {% if sanity.site.logoUrl %}
+            <img src="{{ sanity.site.logoUrl }}" alt="{{ sanity.site.logoAlt or sanity.site.title or "Site logo" }}" />
+          {% else %}
+            {{ sanity.site.title or "Simple 11ty + Sanity" }}
+          {% endif %}
+        </a>
+        <nav class="site-nav">
         {% if sanity.site and sanity.site.navigation and sanity.site.navigation.length %}
-          <ul class="nav-list">
-            {% for item in sanity.site.navigation %}
-              <li class="nav-item">
-                {% if item.linkType == "internal" and item.internalSlug %}
-                  <a href="{{ item.internalSlug | slugToPermalink }}">{{ item.label }}</a>
-                {% elif item.linkType == "external" and item.externalUrl %}
-                  <a href="{{ item.externalUrl }}" target="_blank" rel="noreferrer">
-                    {{ item.label }}
-                  </a>
-                {% else %}
-                  <span>{{ item.label }}</span>
-                {% endif %}
+          <div class="nav-groups">
+            <ul class="nav-list nav-list--primary">
+              {% for item in sanity.site.navigation %}
+                <li class="nav-item"{% if item.children and item.children.length %} data-has-children="true" data-menu-key="{{ item._key }}"{% endif %}>
+                  {% if item.linkType == "internal" and item.internalSlug %}
+                    <a href="{{ item.internalSlug | slugToPermalink }}">{{ item.label }}</a>
+                  {% elif item.linkType == "external" and item.externalUrl %}
+                    <a href="{{ item.externalUrl }}" target="_blank" rel="noreferrer">
+                      {{ item.label }}
+                    </a>
+                  {% else %}
+                    <span>{{ item.label }}</span>
+                  {% endif %}
+                  {% if item.children and item.children.length %}
+                    <span class="nav-arrow" aria-hidden="true">▾</span>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="mega-menu" role="menu" aria-hidden="true">
+            <div class="mega-menu__inner">
+              {% for item in sanity.site.navigation %}
                 {% if item.children and item.children.length %}
-                  <span class="nav-arrow" aria-hidden="true">▾</span>
-                  <ul class="nav-dropdown">
-                    {% for child in item.children %}
-                      <li>
-                        {% if child.linkType == "internal" and child.internalSlug %}
-                          <a href="{{ child.internalSlug | slugToPermalink }}">{{ child.label }}</a>
-                        {% elif child.linkType == "external" and child.externalUrl %}
-                          <a href="{{ child.externalUrl }}" target="_blank" rel="noreferrer">
-                            {{ child.label }}
-                          </a>
-                        {% else %}
-                          <span>{{ child.label }}</span>
-                        {% endif %}
-                      </li>
-                    {% endfor %}
-                  </ul>
+                  <div class="mega-menu__column" data-menu-key="{{ item._key }}">
+                    <div class="mega-menu__title">{{ item.label }}</div>
+                    <ul class="mega-menu__list">
+                      {% for child in item.children %}
+                        <li>
+                          {% if child.linkType == "internal" and child.internalSlug %}
+                            <a href="{{ child.internalSlug | slugToPermalink }}">{{ child.label }}</a>
+                          {% elif child.linkType == "external" and child.externalUrl %}
+                            <a href="{{ child.externalUrl }}" target="_blank" rel="noreferrer">
+                              {{ child.label }}
+                            </a>
+                          {% else %}
+                            <span>{{ child.label }}</span>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 {% endif %}
-              </li>
-            {% endfor %}
-            <li class="nav-item">
-              <a href="/components/">Components</a>
-            </li>
-          </ul>
+              {% endfor %}
+            </div>
+          </div>
         {% else %}
-          <a href="/components/">Components</a>
+          <span></span>
         {% endif %}
-      </nav>
+        </nav>
+      </div>
+      <ul class="nav-list nav-list--evergreen">
+        {% if sanity.site.evergreenLinks and sanity.site.evergreenLinks.length %}
+          {% for item in sanity.site.evergreenLinks %}
+            <li class="nav-item">
+              {% if item.linkType == "internal" and item.internalSlug %}
+                <a href="{{ item.internalSlug | slugToPermalink }}">{{ item.label }}</a>
+              {% elif item.linkType == "external" and item.externalUrl %}
+                <a href="{{ item.externalUrl }}" target="_blank" rel="noreferrer">
+                  {{ item.label }}
+                </a>
+              {% else %}
+                <span>{{ item.label }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
     </header>
 
     <main>
       {{ content | safe }}
     </main>
-    <footer class="site-footer">
+    <footer class="site-footer"{% if sanity.site.footerBackgroundUrl %} style="background-image: url('{{ sanity.site.footerBackgroundUrl }}');"{% endif %}>
       <div class="site-footer__inner">
         <nav class="site-footer__nav">
           {% set footerLinks = sanity.site.footerLinks or sanity.site.navigation %}
@@ -144,10 +179,62 @@
           {% endif %}
         </nav>
         <div class="site-footer__brand">
-          <a href="/" class="brand">{{ sanity.site.title or "Simple 11ty + Sanity" }}</a>
-          <p class="muted">Built with Eleventy + Sanity.</p>
+          <a href="/" class="brand">
+            {% if sanity.site.logoUrl %}
+              <img src="{{ sanity.site.logoUrl }}" alt="{{ sanity.site.logoAlt or sanity.site.title or "Site logo" }}" />
+            {% else %}
+              {{ sanity.site.title or "Simple 11ty + Sanity" }}
+            {% endif %}
+          </a>
+          {% if sanity.site.footerTagline %}
+            <p class="muted">{{ sanity.site.footerTagline }}</p>
+          {% else %}
+            <p class="muted">Built with Eleventy + Sanity.</p>
+          {% endif %}
+          {% if sanity.site.footerLegal %}
+            <p class="muted">{{ sanity.site.footerLegal }}</p>
+          {% endif %}
         </div>
       </div>
     </footer>
+    <script>
+      const siteNav = document.querySelector(".site-nav");
+      if (siteNav) {
+        const megaMenu = siteNav.querySelector(".mega-menu");
+        const navItems = siteNav.querySelectorAll(".nav-item[data-has-children]");
+        const navItemsNoChildren = siteNav.querySelectorAll(".nav-item:not([data-has-children])");
+        const megaColumns = siteNav.querySelectorAll(".mega-menu__column");
+        const openMega = () => {
+          siteNav.classList.add("is-mega-open");
+          if (megaMenu) megaMenu.setAttribute("aria-hidden", "false");
+        };
+        const closeMega = () => {
+          siteNav.classList.remove("is-mega-open");
+          if (megaMenu) megaMenu.setAttribute("aria-hidden", "true");
+          siteNav.removeAttribute("data-active-menu");
+          megaColumns.forEach((col) => col.classList.remove("is-active"));
+        };
+        navItems.forEach((item) => {
+          const key = item.getAttribute("data-menu-key");
+          const activate = () => {
+            siteNav.setAttribute("data-active-menu", key || "");
+            megaColumns.forEach((col) => {
+              col.classList.toggle("is-active", col.getAttribute("data-menu-key") === key);
+            });
+            openMega();
+          };
+          item.addEventListener("mouseenter", activate);
+          item.addEventListener("focusin", activate);
+        });
+        navItemsNoChildren.forEach((item) => {
+          item.addEventListener("mouseenter", closeMega);
+          item.addEventListener("focusin", closeMega);
+        });
+        siteNav.addEventListener("mouseleave", closeMega);
+        siteNav.addEventListener("focusout", (event) => {
+          if (!siteNav.contains(event.relatedTarget)) closeMega();
+        });
+      }
+    </script>
   </body>
 </html>

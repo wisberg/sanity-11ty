@@ -2,6 +2,6 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 0;
-  padding: 2rem;
+  padding: var(--gutter);
   box-shadow: none;
 }

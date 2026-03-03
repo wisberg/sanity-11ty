@@ -1,0 +1,23 @@
+<section
+  class="component full-screen-hero"
+  {% if block.backgroundUrl %}
+    style="background-image: url('{{ block.backgroundUrl }}');"
+  {% endif %}
+>
+  <div class="full-screen-hero__grid">
+    <div class="full-screen-hero__title">
+      <h1>{{ block.heading }}</h1>
+    </div>
+    <div class="full-screen-hero__cta">
+      {% if block.linkType == "internal" and block.internalSlug %}
+        <a class="button sand" href="{{ block.internalSlug | slugToPermalink }}">
+          {{ block.buttonLabel or "Learn more" }}
+        </a>
+      {% elif block.linkType == "external" and block.externalUrl %}
+        <a class="button sand" href="{{ block.externalUrl }}">
+          {{ block.buttonLabel or "Learn more" }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>

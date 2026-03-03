@@ -4,4 +4,4 @@ node_modules
 studio/.sanity
 studio/dist
 _site
-.sanity
+src/_data/sanityRefresh.json

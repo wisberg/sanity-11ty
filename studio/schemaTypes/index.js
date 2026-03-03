@@ -16,6 +16,7 @@ import marketoSignup from "./blocks/marketoSignup.js";
 import showcase from "./blocks/showcase.js";
 import mediaMosaic from "./blocks/mediaMosaic.js";
 import timeline from "./blocks/timeline.js";
+import fullScreenHero from "./blocks/fullScreenHero.js";
 import navItem from "./objects/navItem.js";
 import siteSettings from "./siteSettings.js";
 
@@ -38,6 +39,7 @@ export const schemaTypes = [
   showcase,
   mediaMosaic,
   timeline,
+  fullScreenHero,
   navItem,
   siteSettings
 ];

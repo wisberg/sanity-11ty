@@ -46,7 +46,7 @@ export default defineConfig({
           .title("Content")
           .items([
             S.documentTypeListItem("siteSettings")
-              .title("Site Settings")
+              .title("Site Content")
               .child(
                 S.document()
                   .schemaType("siteSettings")

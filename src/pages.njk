@@ -7,8 +7,60 @@ pagination:
 permalink: "{% if sanity.site.homepageSlug and sanityPage.slug.current == sanity.site.homepageSlug %}/{% else %}{{ sanityPage.slug.current | slugToPermalink }}{% endif %}"
 title: "{{ sanityPage.title }}"
 ---
-<article class="page-shell">
-  {% for block in sanityPage.pageBuilder %}
-    {% include "components/" + block._type + ".njk" ignore missing %}
+{% set currentSlug = sanityPage.slug.current %}
+{% set currentId = sanityPage._id %}
+{% set sidebarParent = null %}
+{% if sanity.site and sanity.site.navigation %}
+  {% for item in sanity.site.navigation %}
+    {% set itemMatches = item.internalSlug == currentSlug or item.internalId == currentId or item.internalId == ("drafts." + currentId) %}
+    {% if itemMatches and item.children and item.children.length %}
+      {% set sidebarParent = item %}
+    {% endif %}
+    {% if item.children and item.children.length %}
+      {% for child in item.children %}
+        {% set childMatches = child.internalSlug == currentSlug or child.internalId == currentId or child.internalId == ("drafts." + currentId) %}
+        {% if childMatches %}
+          {% set sidebarParent = item %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   {% endfor %}
-</article>
+{% endif %}
+
+{% if sidebarParent and sidebarParent.children and sidebarParent.children.length %}
+  <div class="page-layout page-layout--with-sidebar">
+    <aside class="side-nav">
+      <p class="side-nav__label">{{ sidebarParent.label }}</p>
+      <ul>
+        {% for child in sidebarParent.children %}
+          <li class="{% if child.internalSlug == currentSlug %}is-active{% endif %}">
+            {% if child.linkType == "internal" and child.internalSlug %}
+              <a href="{{ child.internalSlug | slugToPermalink }}">
+                <span>{{ child.label }}</span>
+                <span class="side-nav__arrow" aria-hidden="true">→</span>
+              </a>
+            {% elif child.linkType == "external" and child.externalUrl %}
+              <a href="{{ child.externalUrl }}" target="_blank" rel="noreferrer">
+                <span>{{ child.label }}</span>
+                <span class="side-nav__arrow" aria-hidden="true">→</span>
+              </a>
+            {% else %}
+              <span>{{ child.label }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </aside>
+    <article class="page-shell">
+      {% for block in sanityPage.pageBuilder %}
+        {% include "components/" + block._type + ".njk" ignore missing %}
+      {% endfor %}
+    </article>
+  </div>
+{% else %}
+  <article class="page-shell">
+    {% for block in sanityPage.pageBuilder %}
+      {% include "components/" + block._type + ".njk" ignore missing %}
+    {% endfor %}
+  </article>
+{% endif %}

@@ -3,10 +3,36 @@ layout: layouts/base.njk
 title: Component Library
 permalink: /components/index.html
 ---
-<section class="page-shell">
+<div class="page-layout page-layout--with-sidebar">
+  <aside class="side-nav">
+    <p class="side-nav__label">Components</p>
+    <ul>
+      <li><a href="#hero"><span>Hero</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#full-width-hero"><span>Full Width Hero</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#rich-text"><span>Rich Text</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#feature-grid"><span>Feature Grid</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#image-with-text"><span>Image With Text</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#stats"><span>Stats</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#testimonial"><span>Testimonial</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#logo-cloud"><span>Logo Cloud</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#pricing"><span>Pricing</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#faq"><span>FAQ</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#sand-band"><span>Sand Band</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#dark-band"><span>Dark Band</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#marketo"><span>Marketo Signup</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#showcase"><span>Showcase</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#media-mosaic"><span>Media Mosaic</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#timeline"><span>Timeline</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#full-screen-hero"><span>Full Screen Hero</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="#cta"><span>CTA</span><span class="side-nav__arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+  </aside>
+
+  <section class="page-shell components-page">
   <h1>Component Library</h1>
   <p>Use these in Sanity's page builder array to compose new pages.</p>
 
+  <div class="component-section" id="hero">
   <h2>Hero</h2>
   {% set block = {
     "_type": "hero",
@@ -18,7 +44,9 @@ permalink: /components/index.html
     "imagePosition": "left"
   } %}
   {% include "components/hero.njk" %}
+  </div>
 
+  <div class="component-section" id="full-width-hero">
   <h2>Full Width Hero</h2>
   {% set block = {
     "_type": "fullWidthHero",
@@ -34,7 +62,9 @@ permalink: /components/index.html
     "backgroundUrl": "https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1600&q=80"
   } %}
   {% include "components/fullWidthHero.njk" %}
+  </div>
 
+  <div class="component-section" id="rich-text">
   <h2>Rich Text</h2>
   {% set block = {
     "_type": "richText",
@@ -48,7 +78,9 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/richText.njk" %}
+  </div>
 
+  <div class="component-section" id="feature-grid">
   <h2>Feature Grid</h2>
   {% set block = {
     "_type": "featureGrid",
@@ -61,7 +93,9 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/featureGrid.njk" %}
+  </div>
 
+  <div class="component-section" id="image-with-text">
   <h2>Image With Text</h2>
   {% set block = {
     "_type": "imageWithText",
@@ -76,7 +110,9 @@ permalink: /components/index.html
     "imagePosition": "right"
   } %}
   {% include "components/imageWithText.njk" %}
+  </div>
 
+  <div class="component-section" id="stats">
   <h2>Stats</h2>
   {% set block = {
     "_type": "stats",
@@ -88,7 +124,9 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/stats.njk" %}
+  </div>
 
+  <div class="component-section" id="testimonial">
   <h2>Testimonial</h2>
   {% set block = {
     "_type": "testimonial",
@@ -100,7 +138,9 @@ permalink: /components/index.html
     "avatarAlt": "Jordan Lee"
   } %}
   {% include "components/testimonial.njk" %}
+  </div>
 
+  <div class="component-section" id="logo-cloud">
   <h2>Logo Cloud</h2>
   {% set block = {
     "_type": "logoCloud",
@@ -113,7 +153,9 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/logoCloud.njk" %}
+  </div>
 
+  <div class="component-section" id="pricing">
   <h2>Pricing</h2>
   {% set block = {
     "_type": "pricing",
@@ -141,7 +183,9 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/pricing.njk" %}
+  </div>
 
+  <div class="component-section" id="faq">
   <h2>FAQ</h2>
   {% set block = {
     "_type": "faq",
@@ -152,7 +196,9 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/faq.njk" %}
+  </div>
 
+  <div class="component-section" id="sand-band">
   <h2>Sand Band</h2>
   {% set block = {
     "_type": "sandBand",
@@ -164,7 +210,9 @@ permalink: /components/index.html
     "externalUrl": "https://www.bridgebio.com"
   } %}
   {% include "components/sandBand.njk" %}
+  </div>
 
+  <div class="component-section" id="dark-band">
   <h2>Dark Band</h2>
   {% set block = {
     "_type": "darkBand",
@@ -176,7 +224,9 @@ permalink: /components/index.html
     "externalUrl": "https://www.bridgebio.com"
   } %}
   {% include "components/darkBand.njk" %}
+  </div>
 
+  <div class="component-section" id="marketo">
   <h2>Marketo Signup (Mock)</h2>
   {% set block = {
     "_type": "marketoSignup",
@@ -186,7 +236,9 @@ permalink: /components/index.html
     "disclaimer": "This is a demo form. No data is submitted."
   } %}
   {% include "components/marketoSignup.njk" %}
+  </div>
 
+  <div class="component-section" id="showcase">
   <h2>Showcase</h2>
   {% set block = {
     "_type": "showcase",
@@ -205,7 +257,9 @@ permalink: /components/index.html
     "imagePosition": "left"
   } %}
   {% include "components/showcase.njk" %}
+  </div>
 
+  <div class="component-section" id="media-mosaic">
   <h2>Media Mosaic</h2>
   {% set block = {
     "_type": "mediaMosaic",
@@ -240,7 +294,9 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/mediaMosaic.njk" %}
+  </div>
 
+  <div class="component-section" id="timeline">
   <h2>Timeline</h2>
   {% set block = {
     "_type": "timeline",
@@ -264,7 +320,22 @@ permalink: /components/index.html
     ]
   } %}
   {% include "components/timeline.njk" %}
+  </div>
 
+  <div class="component-section" id="full-screen-hero">
+  <h2>Full Screen Hero</h2>
+  {% set block = {
+    "_type": "fullScreenHero",
+    "heading": "We exist to bring meaningful medicines to patients quickly & safely.",
+    "backgroundUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80",
+    "buttonLabel": "Learn more",
+    "linkType": "external",
+    "externalUrl": "https://www.bridgebio.com"
+  } %}
+  {% include "components/fullScreenHero.njk" %}
+  </div>
+
+  <div class="component-section" id="cta">
   <h2>CTA</h2>
   {% set block = {
     "_type": "cta",
@@ -274,4 +345,6 @@ permalink: /components/index.html
     "internalSlug": "home"
   } %}
   {% include "components/cta.njk" %}
-</section>
+  </div>
+  </section>
+</div>
